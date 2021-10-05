@@ -1,9 +1,12 @@
-﻿@model IEnumerable<prjCustomer.Models.tCustomer>
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<prjCustomer.Models.tCustomer>
 
 @{
     ViewBag.Title = "Index";
 }
-
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 <h2>Index</h2>
 
 <p>
@@ -12,13 +15,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fName)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().fName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fPhone)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().fPhone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fAddress)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().fAddress)
         </th>
         <th></th>
     </tr>
@@ -43,3 +46,5 @@
 }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page}))

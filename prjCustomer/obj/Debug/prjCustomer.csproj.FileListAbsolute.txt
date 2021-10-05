@@ -78,3 +78,8 @@ C:\Users\user\source\repos\slnCustomer\prjCustomer\obj\Debug\prjCustomer.csproj.
 C:\Users\user\source\repos\slnCustomer\prjCustomer\obj\Debug\prjCustomer.csproj.CopyComplete
 C:\Users\user\source\repos\slnCustomer\prjCustomer\obj\Debug\prjCustomer.dll
 C:\Users\user\source\repos\slnCustomer\prjCustomer\obj\Debug\prjCustomer.pdb
+C:\Users\user\source\repos\slnCustomer\prjCustomer\bin\PagedList.dll
+C:\Users\user\source\repos\slnCustomer\prjCustomer\bin\PagedList.Mvc.dll
+C:\Users\user\source\repos\slnCustomer\prjCustomer\bin\PagedList.xml
+C:\Users\user\source\repos\slnCustomer\prjCustomer\bin\PagedList.Mvc.xml
+C:\Users\user\source\repos\slnCustomer\prjCustomer\bin\zh-Hant\EntityFramework.SqlServer.resources.dll

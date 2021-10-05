@@ -4,17 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using prjCustomer.Models;
+using PagedList;
 
 namespace prjCustomer.Controllers
 {
     public class HomeController : Controller
     {
         dbCustomerEntities db = new dbCustomerEntities();
+        int pagesize = 5;
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
+            int currentPage = page < 1 ? 1 : page;
             var customers = db.tCustomer.OrderBy(m => m.fId).ToList();
-            return View(customers);
+            var result = customers.ToPagedList(currentPage, pagesize);
+            return View(result);
         }
 
         public ActionResult Create()
