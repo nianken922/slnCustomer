@@ -1,0 +1,42 @@
+﻿@model prjCustomer.Models.tCustomer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tCustomer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fAddress)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { fId = Model.fId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
