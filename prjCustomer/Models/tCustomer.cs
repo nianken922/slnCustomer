@@ -21,7 +21,7 @@ namespace prjCustomer.Models
         [Required]
         public string fName { get; set; }
         [DisplayName("手機電話")]
-        [RegularExpression(@"[0-9]{10}",ErrorMessage ="電話號碼必須十個字")]
+        [RegularExpression(@"[0-9]{10}",ErrorMessage ="電話號碼必須十個數字")]
         public string fPhone { get; set; }
         [DisplayName("客戶地址")]
         [Required]

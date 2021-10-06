@@ -1,0 +1,48 @@
+﻿@model IEnumerable<prjCustomer.Models.tCustomer>
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<form action="@Url.Action("Update")" method="post">
+    <p>
+       <input type="submit" value="整批修改" class="btn btn-info"
+              onclick="return confirm('確定要全部修改嗎?')" />
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fAddress)
+            </th>
+        </tr>
+        @{ int i = 0;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="hidden" value="@item.fId" name="customers[@i].fId" />
+                    <input type="text" value="@item.fName" 
+                           name="customers[@i].fName" class="form-control" />                    
+                </td>
+                <td>
+                    <input type="text" value="@item.fPhone"
+                           name="customers[@i].fPhone" class="form-control" />
+                </td>
+                <td>
+                    <input type="text" value="@item.fAddress"
+                           name="customers[@i].fAddress" class="form-control" />                    
+                </td>
+            </tr>
+          i++;
+        }
+
+    </table>
+</form>

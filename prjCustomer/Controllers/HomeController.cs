@@ -42,6 +42,22 @@ namespace prjCustomer.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public ActionResult DeleteSelected(int[] fId)
+        {
+            if (fId == null)
+                return RedirectToAction("Index");
+            int delfId;
+            for(int i = 0; i < fId.Length; i++)
+            {
+                delfId = fId[i];
+                var customers = db.tCustomer.Where(m => m.fId == delfId).FirstOrDefault();
+                db.tCustomer.Remove(customers);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Edit(int fId)
         {
             var customers = db.tCustomer.Where(m => m.fId==fId).FirstOrDefault();
@@ -56,6 +72,28 @@ namespace prjCustomer.Controllers
             customers.fName = vCustomer.fName;
             customers.fPhone = vCustomer.fPhone;
             customers.fAddress = vCustomer.fAddress;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Update()
+        {
+            var customers = db.tCustomer.OrderByDescending(m => m.fId).ToList();
+            return View(customers);
+        }
+
+        [HttpPost]
+        public ActionResult Update(tCustomer[] customers)
+        {
+            int fId;
+            for(int i = 0; i < customers.Length; i++)
+            {
+                fId = customers[i].fId;
+                var customer = db.tCustomer.Where(m => m.fId == fId).FirstOrDefault();
+                customer.fName = customers[i].fName;
+                customer.fPhone = customers[i].fPhone;
+                customer.fAddress = customers[i].fAddress;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

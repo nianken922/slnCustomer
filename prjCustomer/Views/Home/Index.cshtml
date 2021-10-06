@@ -9,42 +9,49 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" />
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Insert New Data", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().fName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().fPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().fAddress)
-        </th>
-        <th></th>
-    </tr>
+<form method="post" action="@Url.Action("DeleteSelected")">
+    <p>
+        @Html.ActionLink("Insert New Data", "Create")
+        <input type="submit" value="選取刪除項目" class="btn btn-info"
+               onclick="return confirm('確定要刪除嗎');"/> 
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fAddress)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { fId=item.fId }) |
-            @Html.ActionLink("Details", "Details", new { fId=item.fId }) |
-            @Html.ActionLink("Delete", "Delete", new { fId=item.fId })
-        </td>
-    </tr>
-}
+        <a href="@Url.Action("Update")" class="btn btn-info">全部修改</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().fName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().fPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().fAddress)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fAddress)
+                </td>
+                <td>
+                    <input type="checkbox" id="fId" name="fId" value="@item.fId" />
+                    @Html.ActionLink("Edit", "Edit", new { fId = item.fId }) |
+                    @Html.ActionLink("Details", "Details", new { fId = item.fId }) |
+                    @Html.ActionLink("Delete", "Delete", new { fId = item.fId })
+                </td>
+            </tr>
+        }
 
+    </table>
+</form>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page}))
